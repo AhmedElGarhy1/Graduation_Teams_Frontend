@@ -12,7 +12,7 @@ POST /auth/email/reset-password
 
 GET /teams get all teams
 GET /teams/:id get team by it's id
-POST /teams/
+POST /teams/ create team
 PATCH /teams/:id
 DELETE /teams/:id
 PATCH /teams/:id/change-leader
@@ -20,7 +20,6 @@ PATCH /teams/:id/upload-image
 PATCH /teams/:id/remove-image
 POST /teams/:id/members/:memberId
 DELETE /teams/:id/members/:memberId
-GET /teams/email/forget-password/:email
 
 # Profiles endpoints
 
