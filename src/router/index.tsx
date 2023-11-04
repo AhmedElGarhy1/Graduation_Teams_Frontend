@@ -10,6 +10,8 @@ import Home from "../pages/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Students from "../pages/Students";
 import Teams from "../pages/Teams";
+import Profile from "../pages/Profile";
+import SingelTeam from "../pages/SingelTeam";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,11 +32,30 @@ const router = createBrowserRouter(
         <Route
           element={
             <ProtectedRoute>
-              <Teams />
+              <Profile />
             </ProtectedRoute>
           }
-          path="teams"
+          path="profiles/:id"
         />
+        <Route path="teams">
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Teams />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <SingelTeam />
+              </ProtectedRoute>
+            }
+            path=":id"
+          />
+        </Route>
+
         <Route
           element={
             <ProtectedRoute>

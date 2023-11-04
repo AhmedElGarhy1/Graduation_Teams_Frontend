@@ -9,6 +9,7 @@ export interface IAuth {
   accessToken: string;
   roles: string[];
   teamId: number | null;
+  profileId: number;
   image: string | null;
 }
 
