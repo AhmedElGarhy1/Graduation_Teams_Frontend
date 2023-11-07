@@ -6,6 +6,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import { IAuth } from "../../services/api/auth";
 import { setTokenValue } from "../../utils";
+import { defaultProfileIcon } from "../../data/constants";
 
 interface IInitialState {
   user: IAuth | null;
@@ -22,6 +23,7 @@ export const authSlice = createSlice({
       const data = action.payload;
       if (data) {
         setTokenValue(data.accessToken);
+        data.image = defaultProfileIcon;
       }
       state.user = data;
     },

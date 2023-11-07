@@ -186,25 +186,6 @@ const Register: FC = () => {
               </span>
             </div>
 
-            <div className="mt-6">
-              <label className="block text-sm font-medium leading-5 text-gray-700">
-                Age
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <input
-                  {...register("age", {
-                    valueAsNumber: true,
-                  })}
-                  type="number"
-                  placeholder="20"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                />
-              </div>
-              <span className="text-red-500 text-sm">
-                {errors.age?.message}
-              </span>
-            </div>
-
             <div className="flex justify-around  my-5">
               <div className="flex items-center">
                 <input
@@ -239,11 +220,37 @@ const Register: FC = () => {
             <span className="text-red-500 text-sm">
               {errors.gender?.message}
             </span>
+
+            <div>
+              <label
+                htmlFor="level"
+                className="block mb-2 text-sm font-medium text-gray-900 bg-white">
+                Select Your Level
+              </label>
+              <select
+                {...register("level", {
+                  valueAsNumber: true,
+                })}
+                id="level"
+                className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option disabled selected>
+                  Select you Level
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <span className="text-red-500 text-sm">
+                {errors.gender?.message}
+              </span>
+            </div>
+
             <div>
               <label
                 htmlFor="countries"
                 className="block mb-2 text-sm font-medium text-gray-900 bg-white">
-                Select an option
+                Select Your Department
               </label>
               <select
                 {...register("department")}

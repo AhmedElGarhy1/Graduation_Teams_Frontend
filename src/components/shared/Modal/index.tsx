@@ -29,14 +29,14 @@ export interface IModalParams {
   children: ReactNode;
   closeModal: () => void;
   isOpen: boolean;
-  icon: string;
+  // icon: string;
   header: string;
 }
 const CustomModal: FC<IModalParams> = ({
   children,
   isOpen,
   closeModal,
-  icon,
+  // icon,
   header,
 }) => {
   return (
@@ -45,7 +45,7 @@ const CustomModal: FC<IModalParams> = ({
         <section>
           <div className="flex flex-no-wrap justify-between items-center mb-5">
             <div className="flex items-center">
-              <img className="w-8 h-8" src={icon} alt={header} />
+              {/* <img className="w-8 h-8" src={icon} alt={header} /> */}
               <h2 className=" mx-2 text-end text-3xl  text-secondary font-black">
                 {header}
               </h2>

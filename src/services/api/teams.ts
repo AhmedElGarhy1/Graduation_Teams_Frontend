@@ -9,6 +9,7 @@ export interface ITeam {
   id: number;
   name: string;
   leaderName: string;
+  leaderId: number;
   department: string;
   image: string;
   members: {
@@ -36,21 +37,21 @@ const getOne = async (teamId: number): Promise<IApiResponse<ITeam>> => {
 };
 
 const update = async (
-  patientId: number,
-  patientData: TPatient
+  teamId: number,
+  teamData: TPatient
 ): Promise<IApiResponse<ITeam>> => {
-  return await updateData(`${endpoint}/${patientId}`, patientData);
+  return await updateData(`${endpoint}/${teamId}`, teamData);
 };
 
-const deleteOne = async (patientId: number): Promise<IApiResponse<ITeam>> => {
-  const data = await deleteData(endpoint, patientId);
+const deleteOne = async (teamId: number): Promise<IApiResponse<ITeam>> => {
+  const data = await deleteData(endpoint, teamId);
   return data;
 };
 
 const deleteMany = async (
-  patientIds: number[]
+  teamIds: number[]
 ): Promise<IApiResponse<ITeam[]>> => {
-  const data = await deleteData(endpoint, patientIds);
+  const data = await deleteData(endpoint, teamIds);
   return data;
 };
 

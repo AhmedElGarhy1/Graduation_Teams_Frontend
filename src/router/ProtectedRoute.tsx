@@ -4,7 +4,7 @@ import { selectUser, setUser } from "../store/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../hooks/redux";
 import auth from "../services/api/auth";
-import { getTokenValue } from "../utils";
+import { getTokenValue, removeTokenValue, setTokenValue } from "../utils";
 
 interface PropsType {
   children: ReactNode;
@@ -22,9 +22,15 @@ const ProtectedRoute: FC<PropsType> = ({ children }) => {
         navigator("/auth/login");
         return;
       }
-      auth.getCurrentUser().then((data) => {
-        dispatch(setUser(data.data));
-      });
+      auth
+        .getCurrentUser()
+        .then((data) => {
+          dispatch(setUser(data.data));
+        })
+        .catch(() => {
+          navigator("/auth/login");
+          removeTokenValue();
+        });
     }
   }, []);
 

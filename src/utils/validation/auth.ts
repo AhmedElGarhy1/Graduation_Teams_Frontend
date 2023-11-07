@@ -12,7 +12,7 @@ export const singupSchema = z.object({
   email: z.string().email(requiredEmail),
   firstName: z.string(required).min(1),
   lastName: z.string(required).min(1),
-  age: z.number().min(18),
+  level: z.number().max(4),
   phone: z.string(required).min(1),
   gender: z.string(required).min(1),
   password: z.string(required).min(1),

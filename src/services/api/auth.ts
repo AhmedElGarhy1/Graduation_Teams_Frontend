@@ -4,6 +4,7 @@ import { getData, postData } from "../crud";
 const endpoint = "auth";
 
 export interface IAuth {
+  id: number;
   email: string;
   username: string;
   accessToken: string;

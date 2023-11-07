@@ -1,7 +1,8 @@
 export const PAGE_SIZE = 25;
 
 export const defaultIcon = "default.png";
-export const defaultProfileIcon = "default.png";
+export const defaultProfileIcon = "/default_person.jpg";
+export const defaultTeamIcon = "/default_team.svg";
 
 export const publicImages = [
   defaultIcon,

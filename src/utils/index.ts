@@ -15,3 +15,4 @@ export function numberWithCommas(x: number) {
 export const getTokenValue = () => localStorage.getItem("_token");
 export const setTokenValue = (token: string) =>
   localStorage.setItem("_token", token);
+export const removeTokenValue = () => localStorage.removeItem("_token");
