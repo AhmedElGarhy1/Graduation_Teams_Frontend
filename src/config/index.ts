@@ -13,4 +13,4 @@ const queryClient = new QueryClient({
   },
 });
 
-export { i18n, queryClient, store };
+export { queryClient, store };

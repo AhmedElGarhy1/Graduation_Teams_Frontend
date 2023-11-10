@@ -16,12 +16,8 @@ const TeamModal: FC<Props> = ({ closeModal, isOpen, teamId }) => {
 
   return (
     <div>
-      <CustomModal
-        closeModal={closeModal}
-        isOpen={isOpen}
-        header="helo"
-        icon="">
-        {isLoading ? "Loading" : <div>Hello</div>}
+      <CustomModal closeModal={closeModal} isOpen={isOpen} header="helo">
+        {isLoading ? "Loading" : <div>{data?.data.name}</div>}
       </CustomModal>
     </div>
   );

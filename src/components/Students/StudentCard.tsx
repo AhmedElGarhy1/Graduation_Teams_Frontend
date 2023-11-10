@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { IStudent } from "../../services/api/students";
-import JoinTeamButton from "../Teams/JoinTeamButton";
 import { defaultProfileIcon } from "../../data/constants";
 import JoinStudentButton from "./JoinStudentButton";
 

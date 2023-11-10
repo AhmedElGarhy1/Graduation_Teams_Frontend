@@ -1,5 +1,4 @@
 import { PAGE_SIZE } from "../../data/constants";
-import { TTeam } from "../../utils/validation/team";
 import { deleteData, getData, postData, updateData } from "../crud";
 import { IApiResponse } from "./auth";
 

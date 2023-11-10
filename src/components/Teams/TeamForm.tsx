@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FC } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { TTeam, teamSchema } from "../../utils/validation/team";
 
 interface ParamsType {
@@ -14,7 +14,6 @@ const TeamForm: FC<ParamsType> = ({ isLoading, sendRequest }) => {
     handleSubmit,
     register,
     formState: { errors },
-    control,
   } = useForm<TTeam>({
     resolver: zodResolver(teamSchema),
     mode: "all",
@@ -64,8 +63,10 @@ const TeamForm: FC<ParamsType> = ({ isLoading, sendRequest }) => {
             {errors.department?.message}
           </span>
         </div>
-        <button className="inline-flex items-center px-3 py-[6px] text-xl mx-4 font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
-          Create
+        <button
+          disabled={isLoading}
+          className="inline-flex items-center px-3 py-[6px] text-xl mx-4 font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
+          {isLoading ? "Loading..." : "Create"}
         </button>
       </form>
     </div>

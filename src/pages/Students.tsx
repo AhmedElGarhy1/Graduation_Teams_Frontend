@@ -1,19 +1,17 @@
-import { useState, FC } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/slices/AuthSlice";
-import AddTeam from "../components/Teams/AddTeam";
 import students from "../services/api/students";
 import StudentCard from "../components/Students/StudentCard";
 
 const Students = () => {
   const user = useSelector(selectUser);
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   const { data, isLoading } = useQuery(["students", page], () =>
     students.getAllFree()
   );
-  console.log(!!(user && user.roles.some((r) => r === "LEADER")));
-  if (!data) return "Loading...";
+  if (!data || isLoading) return "Loading...";
   return (
     <div>
       <div className="flex flex-wrap gap-5 px-3 justify-center">

@@ -59,7 +59,9 @@ const Login: FC = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form onSubmit={handleSubmit((d) => submitRequest(d))} noValidate>
+          <form
+            onSubmit={handleSubmit((d) => submitRequest(d as any))}
+            noValidate>
             <div className="mt-6">
               <label className="block text-sm font-medium leading-5 text-gray-700">
                 Email

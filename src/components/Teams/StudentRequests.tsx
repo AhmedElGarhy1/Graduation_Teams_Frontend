@@ -1,11 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import useCustomMutation from "../../hooks/useCustomMutation";
-import userJoinTeam, { IUserJoinTeam } from "../../services/api/userJoinTeam";
+import userJoinTeam from "../../services/api/userJoinTeam";
 import RequestCard from "../Requests/RequestCard";
 import { useQuery } from "react-query";
 
 const StudentRequests: FC = () => {
-  const { data } = useQuery("team-requests", () =>
+  const { data, isLoading } = useQuery("team-requests", () =>
     userJoinTeam.getAllForLeaders()
   );
 
@@ -18,7 +18,7 @@ const StudentRequests: FC = () => {
     (id: number) => userJoinTeam.acceptStuent(id)
   );
 
-  if (!data) return "Loading...";
+  if (!data || isLoading) return "Loading...";
   return (
     <div>
       <div>Student requests</div>
