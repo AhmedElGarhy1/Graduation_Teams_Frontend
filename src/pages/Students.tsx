@@ -12,17 +12,22 @@ const Students = () => {
   const { data, isLoading } = useQuery(["students", page], () =>
     students.getAllFree()
   );
-
+  console.log(!!(user && user.roles.some((r) => r === "LEADER")));
   if (!data) return "Loading...";
   return (
     <div>
-      {!user?.teamId && <AddTeam />}
       <div className="flex flex-wrap gap-5 px-3 justify-center">
-        {data?.data
-          .filter((team) => team.id !== user?.id)
-          .map((team) => (
-            <StudentCard canJoin={!user?.teamId} key={team.id} data={team} />
-          ))}
+        {data.data.length <= 0
+          ? "There are no Students"
+          : data.data
+              .filter((team) => team.id !== user?.id)
+              .map((team) => (
+                <StudentCard
+                  canJoin={!!(user && user.roles.some((r) => r === "LEADER"))}
+                  key={team.id}
+                  data={team}
+                />
+              ))}
       </div>
     </div>
   );

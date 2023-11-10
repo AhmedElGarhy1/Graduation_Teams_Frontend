@@ -2,7 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { getTokenValue } from "../utils";
 
-const BASE_URL = "http://localhost:3000";
+// const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://graduationteams.qatarcentral.cloudapp.azure.com:3000";
 
 const customAxios = axios.create({
   baseURL: BASE_URL,

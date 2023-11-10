@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const JoinStudentButton: FC<IProps> = ({ teamId }) => {
-  const { mutate } = useCustomMutation(["sendStudentRequest"], () =>
+  const { mutate, isLoading } = useCustomMutation(["sendStudentRequest"], () =>
     userJoinTeam.create({
       targetId: teamId,
       type: "STUDENT",
@@ -21,8 +21,9 @@ const JoinStudentButton: FC<IProps> = ({ teamId }) => {
   return (
     <button
       onClick={handleClick}
+      disabled={isLoading}
       className="inline-flex items-center px-3 py-[6px] text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-      Join
+      {isLoading ? "Loading..." : "Invite"}
     </button>
   );
 };
