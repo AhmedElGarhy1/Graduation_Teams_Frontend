@@ -23,12 +23,12 @@ const router = createBrowserRouter(
       </Route>
       <Route element={<DashboardLayout />}>
         <Route
+          index
           element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
-          path="home"
         />
         <Route
           element={
