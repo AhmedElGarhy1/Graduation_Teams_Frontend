@@ -13,7 +13,7 @@ const SingelTeam = () => {
   return (
     <div>
       SingelTeam: {data?.data.name}
-      <TeamLeaderArea data={data.data} />
+      <TeamLeaderArea team={data.data} />
     </div>
   );
 };

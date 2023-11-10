@@ -4,7 +4,7 @@ import teams, { ITeam } from "../services/api/teams";
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/slices/AuthSlice";
 import AddTeam from "../components/Teams/AddTeam";
-import TeamCard from "./TeamCard";
+import TeamCard from "../components/Teams/TeamCard";
 
 const Teams = () => {
   const user = useSelector(selectUser);

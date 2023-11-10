@@ -12,6 +12,7 @@ import Students from "../pages/Students";
 import Teams from "../pages/Teams";
 import Profile from "../pages/Profile";
 import SingelTeam from "../pages/SingelTeam";
+import Requests from "../pages/Requests";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,11 +33,29 @@ const router = createBrowserRouter(
         <Route
           element={
             <ProtectedRoute>
-              <Profile />
+              <Requests />
             </ProtectedRoute>
           }
-          path="profiles/:id"
+          path="requests"
         />
+        <Route path="profiles">
+          {/* <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          /> */}
+          <Route
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+            path=":id"
+          />
+        </Route>
         <Route path="teams">
           <Route
             index

@@ -1,6 +1,5 @@
 import { PAGE_SIZE } from "../../data/constants";
-import { TPatient } from "../../utils/validation/patient";
-import { deleteData, getData, postData, updateData } from "../crud";
+import { deleteData, getData, updateData } from "../crud";
 import { IApiResponse } from "./auth";
 
 const endpoint = "profiles";
@@ -14,18 +13,12 @@ export interface IProfile {
   department: string;
 }
 
-const create = async (
-  patientDate: TPatient
-): Promise<IApiResponse<IProfile>> => {
-  const data = await postData(endpoint, patientDate);
-  return data;
-};
 const getAll = async (
-  page: number = 1,
+  skip: number = 0,
   pageSize: number = PAGE_SIZE,
   search?: string
 ): Promise<IApiResponse<IProfile[]>> => {
-  const data = await getData(endpoint, page, pageSize, search);
+  const data = await getData(endpoint, skip, pageSize, search);
   return data.data;
 };
 
@@ -36,7 +29,7 @@ const getOne = async (teamId: number): Promise<IApiResponse<IProfile>> => {
 
 const update = async (
   patientId: number,
-  patientData: TPatient
+  patientData: IProfile
 ): Promise<IApiResponse<IProfile>> => {
   return await updateData(`${endpoint}/${patientId}`, patientData);
 };
@@ -56,7 +49,6 @@ const deleteMany = async (
 };
 
 export default {
-  create,
   getAll,
   getOne,
   update,

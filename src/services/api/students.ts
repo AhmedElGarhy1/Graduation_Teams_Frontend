@@ -3,35 +3,32 @@ import { TTeam } from "../../utils/validation/team";
 import { deleteData, getData, postData, updateData } from "../crud";
 import { IApiResponse } from "./auth";
 
-const endpoint = "teams";
+const endpoint = "users";
 
-export interface ITeam {
+export interface IStudent {
   id: number;
-  name: string;
-  leaderName: string;
-  leaderId: number;
   department: string;
   image: string;
-  members: {
-    username: string;
-    image: string;
-  }[];
+  level: number;
+  username: string;
+  teamId: number;
 }
 
-const create = async (patientDate: TTeam): Promise<IApiResponse<ITeam>> => {
+const create = async (patientDate: TTeam): Promise<IApiResponse<IStudent>> => {
   const data = await postData(endpoint, patientDate);
   return data;
 };
-const getAll = async (
+const getAllFree = async (
   skip: number = 0,
   pageSize: number = PAGE_SIZE,
   search?: string
-): Promise<IApiResponse<ITeam[]>> => {
-  const data = await getData(endpoint, skip, pageSize, search);
+): Promise<IApiResponse<IStudent[]>> => {
+  const params = "type=free";
+  const data = await getData(endpoint, skip, pageSize, search, params);
   return data.data;
 };
 
-const getOne = async (teamId: number): Promise<IApiResponse<ITeam>> => {
+const getOne = async (teamId: number): Promise<IApiResponse<IStudent>> => {
   const data = await getData(endpoint + "/" + teamId, 1, PAGE_SIZE, "");
   return data;
 };
@@ -39,25 +36,25 @@ const getOne = async (teamId: number): Promise<IApiResponse<ITeam>> => {
 const update = async (
   teamId: number,
   teamData: TTeam
-): Promise<IApiResponse<ITeam>> => {
+): Promise<IApiResponse<IStudent>> => {
   return await updateData(`${endpoint}/${teamId}`, teamData);
 };
 
-const deleteOne = async (teamId: number): Promise<IApiResponse<ITeam>> => {
+const deleteOne = async (teamId: number): Promise<IApiResponse<IStudent>> => {
   const data = await deleteData(endpoint, teamId);
   return data;
 };
 
 const deleteMany = async (
   teamIds: number[]
-): Promise<IApiResponse<ITeam[]>> => {
+): Promise<IApiResponse<IStudent[]>> => {
   const data = await deleteData(endpoint, teamIds);
   return data;
 };
 
 export default {
   create,
-  getAll,
+  getAllFree: getAllFree,
   getOne,
   update,
   deleteOne,

@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ITeam } from "../services/api/teams";
-import { defaultTeamIcon } from "../data/constants";
+import { ITeam } from "../../services/api/teams";
+import { defaultTeamIcon } from "../../data/constants";
+import JoinTeamButton from "./JoinTeamButton";
 
 interface CardPropsType {
   data: ITeam;
@@ -24,11 +25,7 @@ const TeamCard: FC<CardPropsType> = ({ data, canJoin }) => {
           {data.leaderName}
         </span>
         <div className="flex mt-4 space-x-2 md:mt-6">
-          {canJoin && (
-            <button className="inline-flex items-center px-3 py-[6px] text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Join
-            </button>
-          )}
+          {canJoin && <JoinTeamButton teamId={data.id} />}
           <Link
             to={"" + data.id}
             className="inline-flex items-center px-3 py-[6px] text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">

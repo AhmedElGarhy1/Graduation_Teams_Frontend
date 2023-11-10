@@ -4,7 +4,7 @@ import { selectUser, setUser } from "../store/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../hooks/redux";
 import auth from "../services/api/auth";
-import { getTokenValue, removeTokenValue, setTokenValue } from "../utils";
+import { getTokenValue, removeTokenValue } from "../utils";
 
 interface PropsType {
   children: ReactNode;
@@ -17,6 +17,8 @@ const ProtectedRoute: FC<PropsType> = ({ children }) => {
   const navigator = useNavigate();
 
   useEffect(() => {
+    console.log(user);
+    console.log(getTokenValue());
     if (!user) {
       if (!getTokenValue()) {
         navigator("/auth/login");
@@ -27,7 +29,8 @@ const ProtectedRoute: FC<PropsType> = ({ children }) => {
         .then((data) => {
           dispatch(setUser(data.data));
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           navigator("/auth/login");
           removeTokenValue();
         });

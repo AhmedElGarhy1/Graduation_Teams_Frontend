@@ -37,6 +37,13 @@ const Header = () => {
                 Students
               </Link>
             </li>
+            <li>
+              <Link
+                to="/requests"
+                className="no-underline text-[16px] sm:text-lg hover:text-gray-600">
+                Requests
+              </Link>
+            </li>
           </ul>
         </nav>
         <div className="w-1/2">

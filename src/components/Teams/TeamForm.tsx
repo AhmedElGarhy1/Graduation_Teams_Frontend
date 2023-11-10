@@ -52,7 +52,7 @@ const TeamForm: FC<ParamsType> = ({ isLoading, sendRequest }) => {
             {...register("department")}
             id="countries"
             className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option disabled selected>
+            <option value="" disabled selected>
               Select you Department
             </option>
             <option value="IT">IT</option>
@@ -60,7 +60,9 @@ const TeamForm: FC<ParamsType> = ({ isLoading, sendRequest }) => {
             <option value="IS">IS</option>
             <option value="DS">DS</option>
           </select>
-          <span className="text-red-500 text-sm">{errors.gender?.message}</span>
+          <span className="text-red-500 text-sm">
+            {errors.department?.message}
+          </span>
         </div>
         <button className="inline-flex items-center px-3 py-[6px] text-xl mx-4 font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
           Create
